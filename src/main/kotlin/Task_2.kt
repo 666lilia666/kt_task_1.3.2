@@ -1,38 +1,20 @@
-import kotlin.math.abs
-
 fun main() {
-    val transferAmount = 80_000
-    val vk = Card("VK PAY", 15_000, 40_000, 0)
-    val master = Card("MasterCard", 150_000, 600_000, 0, 75_000)
-    val maestro = Card("Maestro", 150_000, 600_000, 0, 75_000)
-    val mir = Card("Мир", 150_000, 600_000, 0)
-    val visa = Card("Visa", 150_000, 600_000, 0)
+    val transferAmount = 70_000
+    val vk = Card("VK PAY", 0)
+    val master = Card("MasterCard", 50_000, 75_000,0.006,20)
+    val maestro = Card("Maestro", 0, 75_000,0.006,20)
+    val mir = Card("Мир", 0,0,0.0075,0,35)
+    val visa = Card("Visa", 0,0,0.0075,0,35)
 
-    println("Комиссия за перевод составляет: ${commission(maestro, transferAmount).toInt()} руб.")
-}
+    vk.commissionMassage(transferAmount)
+    maestro.commissionMassage(transferAmount)
+    master.commissionMassage(transferAmount)
+    mir.commissionMassage(transferAmount)
+    visa.commissionMassage(transferAmount)
 
-fun commission(cardType: Card, transferAmount: Int): Double {
-    val difference = abs(cardType._freeLimit - cardType._transferAmount - transferAmount)
-    val result: Double = when (cardType._name) {
-        "MasterCard" -> when (cardType._transferAmount < cardType._freeLimit && cardType._transferAmount + transferAmount
-                < cardType._freeLimit) {
-            true -> 0.0
-            else -> difference * 0.006 + 20
-        }
-        "Maestro" -> when (cardType._transferAmount < cardType._freeLimit && cardType._transferAmount + transferAmount
-                < cardType._freeLimit) {
-            true -> 0.0
-            else -> difference * 0.006 + 20
-        }
-        "Visa" -> when (difference * 0.0075 < 35) {
-            true -> 35.0
-            else -> difference * 0.0075
-        }
-        "Мир" -> when (difference * 0.0075 < 35) {
-            true -> 35.0
-            else -> difference * 0.0075
-        }
-        else -> 0.0
-    }
-    return result
+    println(vk.commission(transferAmount))
+    println(maestro.commission(transferAmount))
+    println(master.commission(transferAmount))
+    println(mir.commission(transferAmount))
+    println(visa.commission(transferAmount))
 }
