@@ -1,5 +1,5 @@
 fun main() {
-    val transferAmount = 70_000
+    val transferAmount = 30
     val vk = Card("VK PAY", 0)
     val master = Card("MasterCard", 50_000, 75_000,0.006,20)
     val maestro = Card("Maestro", 0, 75_000,0.006,20)

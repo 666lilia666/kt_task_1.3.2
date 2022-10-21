@@ -61,8 +61,8 @@ class Card(val _name: String, var _transferAmount: Int) {
             0 -> when (_dopCommission) {
                 0 -> when (_minCommission) {
                     0 -> transferAmount * _commissionPercent
-                    else -> when (transferAmount * _commissionPercent < _minCommission) {
-                        true -> _minCommission
+                    else -> when (transferAmount * _commissionPercent < _minCommission.toDouble()) {
+                        true -> _minCommission.toDouble()
                         else -> transferAmount * _commissionPercent
                     }
                 }
@@ -83,8 +83,8 @@ class Card(val _name: String, var _transferAmount: Int) {
             0 -> when (_dopCommission) {
                 0 -> when (_minCommission) {
                     0 -> transferAmount * _commissionPercent
-                    else -> when (transferAmount * _commissionPercent < _minCommission) {
-                        true -> _minCommission
+                    else -> when (transferAmount * _commissionPercent < _minCommission.toDouble()) {
+                        true -> _minCommission.toDouble()
                         else -> transferAmount * _commissionPercent
                     }
                 }
