@@ -46,7 +46,7 @@ class CardTest {
         )
 
         val result = cardTest.commission(amount)
-        assertEquals(35, result.toInt())
+        assertEquals(40, result.toInt())
 
     }
     @Test
