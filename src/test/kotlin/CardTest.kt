@@ -46,9 +46,10 @@ class CardTest {
         )
 
         val result = cardTest.commission(amount)
-        assertEquals(40, result.toInt())
+        assertEquals(35, result.toInt())
 
     }
+
     @Test
     fun dopCommission() {
         val amount: Int = 1000
@@ -72,6 +73,7 @@ class CardTest {
         assertEquals(27, result.toInt())
 
     }
+
     @Test
     fun overFreeLimitCommission() {
         val amount: Int = 20000
@@ -97,7 +99,7 @@ class CardTest {
     }
 
     @Test
-    fun Commission() {
+    fun commission() {
         val amount: Int = 20000
         val name: String = "Card Test 1"
         val transferAmount: Int = 0
